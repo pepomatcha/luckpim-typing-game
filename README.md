@@ -2,7 +2,7 @@
 
 **LUCKPIM** is an interactive, web-based typing practice game designed to help elementary school students and general learners improve Thai spelling accuracy and typing speed (WPM) through a colorful, accessible interface[cite: 6, 21, 22].
 
-🎮 **[Play LUCKPIM Live on the Web](https://<your-username>.github.io/<repo-name>/LuckPim.html)**
+🎮 **[Play LUCKPIM Live on the Web](https://pepomatcha.github.io/luckpim-typing-game/LuckPim.html)**
 
 ---
 
