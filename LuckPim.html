@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCKPIM - Speed Typing</title>
+    <!-- รองรับอีโมจิธงชาติ -->
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@400;500&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ปุ่มสลับภาษามุมขวาบน -->
+    <button id="global-lang-btn" style="position: absolute; top: 15px; right: 15px; background: #fff; border: 2px solid #333; border-radius: 10px; padding: 5px 10px; cursor: pointer; font-family: 'Itim', 'Noto Color Emoji', sans-serif; font-size: 1.1rem; z-index: 100;">🇹🇭 TH</button>
+
+    <div class="container">
+        <!-- 1. หน้า Main Menu -->
+        <div id="main-menu" class="screen active">
+            <h1 class="brand-title">LUCKPIM</h1>
+            <h2 class="menu-subtitle">MENU</h2>
+            <div class="main-menu-list">
+                <button id="btn-play-menu" class="btn-menu-item" data-i18n="menuPlay">เล่นเกม</button>
+                <button id="btn-workshop-menu" class="btn-menu-item" data-i18n="menuVocab">จัดการคำศัพท์</button>
+                <button id="btn-mod-manager-menu" class="btn-menu-item" data-i18n="menuMod">จัดการม็อด</button>
+                <button id="btn-settings-menu" class="btn-menu-item btn-box-border" data-i18n="menuSettings">การตั้งค่า</button>
+                <button id="btn-exit-menu" class="btn-menu-item" data-i18n="menuExit">ออกจากเกม</button>
+            </div>
+            
+            <!-- ปุ่ม Discord (มุมขวาล่างเฉพาะหน้า Main Menu) -->
+            <a href="https://discord.gg/Cvtu3rSPuE" target="_blank" id="discord-btn" title="Join our Discord!">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" width="45" height="45">
+                    <path fill="#5865F2" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.31,46,96.2,53,91.08,65.69,84.69,65.69Z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- 2. หน้าเลือกระดับความยาก -->
+        <div id="level-screen" class="screen">
+            <div class="top-nav-bar">
+                <button class="btn-back-link btn-to-main" data-i18n="btnBackMain">&lt; กลับเมนูหลัก</button>
+                <h2 class="page-title" data-i18n="titleLevel">เลือกระดับ</h2>
+            </div>
+            <div class="level-list">
+                <button class="btn-category-item btn-level" data-level="ง่าย" data-desc="คำสั้น" data-i18n="levelEasy">&gt; ง่าย (คำสั้น)</button>
+                <button class="btn-category-item btn-level" data-level="ปานกลาง" data-desc="คำยาว" data-i18n="levelMed">&gt; ปานกลาง (คำยาว)</button>
+                <button class="btn-category-item btn-level" data-level="ยาก" data-desc="ประโยค" data-i18n="levelHard">&gt; ยาก (ประโยค)</button>
+            </div>
+        </div>
+
+        <!-- 3. หน้าเลือกหมวดหมู่ -->
+        <div id="category-screen" class="screen">
+            <div class="top-nav-bar">
+                <button class="btn-back-link btn-to-main" data-i18n="btnBackMain">&lt; กลับเมนูหลัก</button>
+                <h2 class="page-title" data-i18n="titleGame">เล่นเกม</h2>
+            </div>
+            <div class="sub-nav-bar">
+                <button id="btn-back-level" class="btn-box-back" data-i18n="btnBack">&lt; ย้อนกลับ</button>
+            </div>
+            <h3 id="category-level-title" class="section-title">เลือกหมวดหมู่</h3>
+            <div id="category-list" class="category-list"></div>
+        </div>
+
+        <!-- 4. หน้าเล่นเกม -->
+        <div id="game-screen" class="screen">
+            <div class="top-nav-bar">
+                <button id="btn-quit-game" class="btn-back-link" data-i18n="btnBack">&lt; ย้อนกลับ</button>
+                <div id="game-meta" class="page-title"></div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.2rem; margin-bottom: 10px;">
+                <div id="game-progress"></div>
+                <div id="game-timer" style="color: #e67e22; font-weight: bold;"></div>
+            </div>
+            <div id="target-word"></div>
+            <div class="typing-box"><span data-i18n="lblType">พิมพ์:</span> <span id="typed-display"></span></div>
+            <div id="game-status"></div>
+        </div>
+
+        <!-- 5. หน้าสรุปผล -->
+        <div id="result-screen" class="screen">
+            <h2 data-i18n="titleResult">🎉 สรุปผลการเล่น</h2>
+            <p><span data-i18n="resScoreText">คะแนน:</span> <span id="res-score"></span></p>
+            <p><span data-i18n="resTimeText">เวลาที่ใช้:</span> <span id="res-time"></span></p>
+            <p><span data-i18n="resSpeedText">ความเร็ว:</span> <span id="res-wpm"></span></p>
+            <button id="btn-retry" class="btn-menu-item" data-i18n="btnRetry">เล่นอีกครั้ง</button>
+            <button class="btn-menu-item btn-to-main" data-i18n="btnBackMain">กลับเมนูหลัก</button>
+        </div>
+
+        <!-- 6. หน้าจัดการคำศัพท์ -->
+        <div id="workshop-screen" class="screen">
+            <div class="top-nav-bar">
+                <button class="btn-back-link btn-to-main" data-i18n="btnBackMain">&lt; กลับเมนูหลัก</button>
+                <h2 class="page-title" data-i18n="menuVocab">จัดการคำศัพท์</h2>
+            </div>
+            <div class="workshop-form">
+                <label data-i18n="lblLevel">ระดับความยาก:</label>
+                <div style="display: flex; gap: 10px; margin: 8px 0 16px 0;">
+                    <button class="btn-category-item ws-level-btn selected" data-value="ง่าย" data-i18n="wsEasy">ง่าย</button>
+                    <button class="btn-category-item ws-level-btn" data-value="ปานกลาง" data-i18n="wsMed">ปานกลาง</button>
+                    <button class="btn-category-item ws-level-btn" data-value="ยาก" data-i18n="wsHard">ยาก</button>
+                </div>
+                <label data-i18n="lblCat">ชื่อหมวดหมู่:</label>
+                <input type="text" id="ws-cat">
+                <label data-i18n="lblWord">คำศัพท์ / ประโยค:</label>
+                <input type="text" id="ws-word">
+                <button id="btn-add-word" class="btn-menu-item" data-i18n="btnAddWord">เพิ่มคำศัพท์</button>
+                
+                <h3 class="section-title" style="margin-top: 20px; margin-bottom: 10px;" data-i18n="titleCustom">คำศัพท์ที่คุณเพิ่มเอง</h3>
+                <div id="custom-vocab-list" style="margin-bottom: 20px; font-size: 1.2rem; min-height: 80px; max-height: 200px; overflow-y: auto; border: 2px dashed #ccc; border-radius: 10px; padding: 10px;"></div>
+
+                <button id="btn-export-mod" class="btn-menu-item btn-box-border" data-i18n="btnExport">ส่งออกเป็นไฟล์ม็อด (.json)</button>
+            </div>
+        </div>
+
+        <!-- 7. หน้าจัดการม็อด -->
+        <div id="mod-manager-screen" class="screen">
+            <div class="top-nav-bar">
+                <button class="btn-back-link btn-to-main" data-i18n="btnBackMain">&lt; กลับเมนูหลัก</button>
+                <h2 class="page-title" data-i18n="menuMod">จัดการม็อด</h2>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px;" data-i18n="lblImport">นำเข้าไฟล์ม็อด (.json):</label>
+                <input type="file" id="mod-file-input" accept=".json" style="font-family: 'Itim'; font-size: 1rem;">
+            </div>
+            <h3 class="section-title" data-i18n="titleInstalled">รายการม็อดที่ติดตั้งแล้ว</h3>
+            <div id="mod-registry-list" style="border: 2px solid #000; border-radius: 10px; padding: 15px; min-height: 150px;"></div>
+        </div>
+
+        <!-- 8. หน้าการตั้งค่า -->
+        <div id="settings-screen" class="screen">
+            <div class="top-nav-bar">
+                <button class="btn-back-link btn-to-main" data-i18n="btnBackMain">&lt; กลับเมนูหลัก</button>
+                <h2 class="page-title" data-i18n="menuSettings">การตั้งค่า</h2>
+            </div>
+            <div class="workshop-form">
+                <label data-i18n="lblLang">เลือกภาษา (Language):</label>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button class="btn-menu-item btn-lang-opt" data-lang="th" style="background: #e3fafc;">🇹🇭 ภาษาไทย</button>
+                    <button class="btn-menu-item btn-lang-opt" data-lang="en">🇬🇧 English</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- เครดิตผู้จัดทำ (มุมซ้ายล่าง) -->
+    <div id="credits-footer">จัดทำโดย กลุ่มเมื่อคืนผมนอนไม่หลับ</div>
+
+    <script src="js/vocabulary.js"></script>
+    <script src="js/workshop.js"></script>
+    <script src="js/gameplay.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
