@@ -24,9 +24,9 @@
 ## Development Team
 Course: SF221 — Thammasat University
 Group: เมื่อคืนผมนอนไม่หลับ
-น.ส.นฤกมล ลาภสุวรรณ์ (6810742392) — Lead & System Design
-น.ส.ฐิติกานต์ ด้วงสกุล (6810742343) — Frontend Design
-น.ส.มนพัทธ์ รักการดี (6810742442) — Dev & Backend
+* น.ส.นฤกมล ลาภสุวรรณ์ (6810742392) — Lead & System Design
+* น.ส.ฐิติกานต์ ด้วงสกุล (6810742343) — Frontend Design
+* น.ส.มนพัทธ์ รักการดี (6810742442) — Dev & Backend
 
 ## 🛠️ Tech Stack & Project Structure
 Built with vanilla **HTML5**, **CSS3**, and **JavaScript (ES6+)**[cite: 1]:
